@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils';
 import '@/styles/globals.css';
 import { Inter } from 'next/font/google';
 import Navbar from '@/components/Navbar';
-import { Toaster } from '@/components/ui/toaster';
+import { Toaster } from '@/components/ui/Toaster';
 
 export const metadata = {
 	title: 'Geddit',
@@ -13,8 +13,10 @@ const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({
 	children,
+	authModal,
 }: {
 	children: React.ReactNode;
+	authModal: React.ReactNode;
 }) {
 	return (
 		<html
@@ -25,7 +27,12 @@ export default function RootLayout({
 			)}
 		>
 			<body className='min-h-screen pt-12 antialiased bg-slate-50'>
+				{/* @ts-expect-error server component */}
+
 				<Navbar />
+
+				{authModal}
+
 				<div className='container h-full pt-12 mx-auto max-w-7xl'>
 					{children}
 				</div>
