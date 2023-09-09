@@ -3,6 +3,7 @@ import '@/styles/globals.css';
 import { Inter } from 'next/font/google';
 import Navbar from '@/components/Navbar';
 import { Toaster } from '@/components/ui/Toaster';
+import Providers from '@/components/Providers';
 
 export const metadata = {
 	title: 'Geddit',
@@ -27,17 +28,19 @@ export default function RootLayout({
 			)}
 		>
 			<body className='min-h-screen pt-12 antialiased bg-slate-50'>
-				{/* @ts-expect-error server component */}
+				<Providers>
+					{/* @ts-expect-error server component */}
 
-				<Navbar />
+					<Navbar />
 
-				{authModal}
+					{authModal}
 
-				<div className='container h-full pt-12 mx-auto max-w-7xl'>
-					{children}
-				</div>
+					<div className='container h-full pt-12 mx-auto max-w-7xl'>
+						{children}
+					</div>
 
-				<Toaster />
+					<Toaster />
+				</Providers>
 			</body>
 		</html>
 	);
