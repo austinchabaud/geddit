@@ -58,7 +58,7 @@ const SubscribeLeaveToggle = ({
 		},
 	});
 
-	const { mutate: unsubscribe, isLoading: isUnsubLoading } = useMutation({
+	const { mutate: unsubscribe, isLoading: isUnsubscribing } = useMutation({
 		mutationFn: async () => {
 			const payload: SubscribeToSubredditPayload = {
 				subredditId,
@@ -90,7 +90,7 @@ const SubscribeLeaveToggle = ({
 	return isSubscribed ? (
 		<Button
 			className='w-full mt-1 mb-4'
-			isLoading={isUnsubLoading}
+			isLoading={isUnsubscribing}
 			onClick={() => unsubscribe()}
 		>
 			Leave community
