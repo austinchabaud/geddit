@@ -6,7 +6,7 @@ interface PageProps {
 		slug: string;
 	};
 }
-
+// page
 const page = async ({ params }: PageProps) => {
 	const subreddit = await db.subreddit.findFirst({
 		where: {
